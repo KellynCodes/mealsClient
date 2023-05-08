@@ -4,16 +4,14 @@ import Footer from "./Footer";
 import Nav from "./Nav";
 import { FaTimes } from "react-icons/fa";
 import { useSelector } from "react-redux";
-import { publicRequest, userRequest } from "../axiosRequest";
+import { userRequest } from "../axiosRequest";
 
 function Cart() {
   const [user, setUser] = useState(null);
 
-  const cart = useSelector((state) => state.cart.products);
+  const cartItem = useSelector((state) => state.cart.products);
   const sessionUser = useSelector((state) => state.user.currentUser);
 
-  const cartItem = cart;
-  console.log(cart);
   useEffect(() => {
     const fetchUser = async () => {
       const getUser = await userRequest.get(`users/find/${sessionUser._id}`);
@@ -23,7 +21,7 @@ function Cart() {
     };
     console.log(user);
     fetchUser();
-  }, []);
+  }, [sessionUser, user]);
 
   const deleteCartItem = (id) => {};
   return (

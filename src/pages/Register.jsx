@@ -4,6 +4,7 @@ import { Route, Routes, Link } from "react-router-dom";
 import Login from "./Login";
 import Nav from "./Nav";
 import Footer from "./Footer";
+import { publicRequest } from "../axiosRequest";
 
 function Register() {
   const [userName, setUserName] = useState("");
@@ -13,7 +14,7 @@ function Register() {
   const [password, setPassword] = useState("");
 
   const RegUser = () => {
-    Axios.post("http://localhost:4000/api/auth/register", {
+    Axios.post(publicRequest.get("/api/auth/register"), {
       username: userName,
       country: country,
       phone: phone,

@@ -2,12 +2,16 @@ import Axios from "axios";
 
 let token;
 function GetToken() {
-  token = JSON.parse(JSON.parse(localStorage.getItem("persist:root"))?.user)
-    .currentUser.accessToken;
-  if (token === undefined) {
-    console.log(token);
+  let localStorageToken = localStorage.getItem("persist:root");
+  token = JSON.parse(JSON.parse(localStorageToken)?.user);
+  console.log(token);
+  if (token.currentUser === null) {
+    console.log(localStorageToken);
     return "";
   }
+  token = JSON.parse(JSON.parse(localStorageToken)?.user).currentUser
+    .accessToken;
+
   return token;
 }
 const BASE_URL = "http://localhost:4000/api";

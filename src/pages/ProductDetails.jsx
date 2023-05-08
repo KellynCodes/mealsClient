@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from "react";
 import { FaCartArrowDown, FaMinus, FaPlus } from "react-icons/fa";
 import { useDispatch } from "react-redux";
-import { publicRequest, userRequest } from "../axiosRequest";
+import { userRequest } from "../axiosRequest";
 import "../css/productDetails.css";
 import { addProduct } from "../Redux/CartRedux";
 import Nav from "./Nav";
@@ -40,7 +40,7 @@ const ProductDetails = () => {
   const addItemTocart = (e) => {
     e.preventDefault();
     userRequest
-      .post("http://localhost:4000/api/carts", {
+      .post(userRequest.get("/api/carts"), {
         productId,
         productTitle,
         productDesc,
@@ -61,7 +61,7 @@ const ProductDetails = () => {
       setDucts(Array(product));
     };
     fetchProducts();
-  }, []);
+  }, [windowURl]);
   console.log(ducts);
 
   return (

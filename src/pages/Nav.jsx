@@ -9,9 +9,9 @@ import {
   BsSearch,
 } from "react-icons/bs";
 import { FaBars, FaTimes } from "react-icons/fa";
-import { Badge } from "@material-ui/core";
-import { ShoppingCartOutlined } from "@material-ui/icons";
 
+import Badge from "@mui/material/Badge";
+import ShoppingCartIcon from "@emotion/styled";
 import { Routes, Route, Link } from "react-router-dom";
 import { useState } from "react";
 import { useSelector } from "react-redux";
@@ -19,9 +19,6 @@ import { useSelector } from "react-redux";
 function Nav() {
   const [isMobile, setIsMobile] = useState(false);
   const cartQauntity = useSelector((state) => state.cart.quantity);
-  const sessionUser = JSON.parse(
-    JSON.parse(localStorage.getItem("persist:root"))?.user
-  ).currentUser;
   return (
     <div className="nav">
       <nav>
@@ -83,7 +80,7 @@ function Nav() {
               <li>
                 <Link to="/cart">
                   <Badge badgeContent={cartQauntity} color="primary">
-                    <ShoppingCartOutlined className="fa-cart" />
+                    <ShoppingCartIcon className="fa-cart" />
                   </Badge>
                 </Link>
               </li>
@@ -104,7 +101,7 @@ function Nav() {
             <Link to="/cart">
               <i>
                 <Badge badgeContent={cartQauntity}>
-                  <ShoppingCartOutlined className="fa-cart" />
+                  <ShoppingCartIcon className="fa-cart" />
                 </Badge>
               </i>
             </Link>
