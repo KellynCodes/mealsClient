@@ -14,9 +14,11 @@ import KellynCodes from "../images/kellyncodes.png";
 import { BsChatRightDots, BsEye } from "react-icons/bs";
 import { userRequest } from "../axiosRequest";
 import SearchBar from "./components/SearchBar";
+import { useRef } from "react";
 
 function Index() {
   const [ducts, setDucts] = useState(null);
+  const windowWidth = useRef(window.innerWidth);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -70,7 +72,7 @@ function Index() {
 
       {/* <!-- ==================Search Food Section======================= --> */}
 
-      {window.innerWidth > 700 && (
+      {windowWidth > 700 && (
         <div className="searchFoodContainer">
           <SearchBar />
         </div>

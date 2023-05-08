@@ -15,6 +15,7 @@ import {
 import "./css/boot.css";
 import "./css/index.css";
 import "./css/RegisterAndLogin.css";
+import ProductDetails from "./pages/ProductDetails";
 
 function App() {
   const user = useSelector((state) => state.user.currentUser);
@@ -33,6 +34,7 @@ function App() {
             element={user ? <Navigate to="/" /> : <Register />}
           />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/products/find/:id" element={<ProductDetails />} />
         </Routes>
       </ReactDom>
     </>

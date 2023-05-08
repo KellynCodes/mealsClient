@@ -31,7 +31,7 @@ const ProductDetails = () => {
   const addToCart = () => {
     //add to cart
     dispatch(addProduct(ducts, quantity));
-    publicRequest.post("/carts/", {
+    userRequest.post("/carts/", {
       userId: ducts._id,
     });
     console.log(ducts);
@@ -55,7 +55,7 @@ const ProductDetails = () => {
   const windowURl = window.location.pathname;
   useEffect(() => {
     const fetchProducts = async () => {
-      const fetchProduct = await publicRequest.get(`${windowURl}`);
+      const fetchProduct = await userRequest.get(`${windowURl}`);
       const product = await fetchProduct.data;
       console.log(product);
       setDucts(Array(product));

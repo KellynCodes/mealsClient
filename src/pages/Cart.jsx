@@ -4,24 +4,24 @@ import Footer from "./Footer";
 import Nav from "./Nav";
 import { FaTimes } from "react-icons/fa";
 import { useSelector } from "react-redux";
-import { publicRequest } from "../axiosRequest";
+import { publicRequest, userRequest } from "../axiosRequest";
 
 function Cart() {
   const [user, setUser] = useState(null);
 
   const cart = useSelector((state) => state.cart.products);
+  const sessionUser = useSelector((state) => state.user.currentUser);
+
   const cartItem = cart;
   console.log(cart);
-
   useEffect(() => {
     const fetchUser = async () => {
-      const getUser = await publicRequest.get(`users/find/${user._id}`);
-      const user = await getUser.data;
-      console.log(user);
-      setUser(Array(user));
+      const getUser = await userRequest.get(`users/find/${sessionUser._id}`);
+      const userDetails = await getUser.data;
+      console.log(userDetails);
+      setUser(Array(userDetails));
     };
     console.log(user);
-
     fetchUser();
   }, []);
 
