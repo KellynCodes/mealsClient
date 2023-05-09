@@ -14,7 +14,7 @@ function Register() {
   const [password, setPassword] = useState("");
 
   const RegUser = () => {
-    Axios.post(publicRequest.get("/api/auth/register"), {
+    Axios.post(publicRequest.post("/auth/register"), {
       username: userName,
       country: country,
       phone: phone,
