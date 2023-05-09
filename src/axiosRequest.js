@@ -3,6 +3,11 @@ import Axios from "axios";
 let token;
 function GetToken() {
   let localStorageToken = localStorage.getItem("persist:root");
+  console.log(localStorageToken);
+  if (token == null) {
+    console.log(localStorageToken);
+    return "";
+  }
   token = JSON.parse(JSON.parse(localStorageToken)?.user);
   console.log(token);
   if (token.currentUser === null) {
@@ -14,7 +19,7 @@ function GetToken() {
 
   return token;
 }
-const BASE_URL = "http://localhost:4000/api";
+const BASE_URL = "https://meals-d5z2.onrender.com/api";
 const UserToken = GetToken();
 
 export const userRequest = Axios.create({
